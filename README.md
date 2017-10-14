@@ -5,4 +5,4 @@
 2. Technologies
 3. Execution Platform
 4. Get Started
-[Got to Wiki Get Started page](wiki)
+[Got to Wiki Get Started page](~/wiki)
