@@ -56,6 +56,7 @@ Providers
 ### Verify Kubernete Access
 `kubectl get nodes`  
 
-
+### Browse the dashboard
+`az aks browse --resource-group Continuousintegration --name mesfAKS`
 
 
