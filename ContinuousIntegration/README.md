@@ -30,3 +30,12 @@ Source : [Azure - Container Registry](https://docs.microsoft.com/fr-fr/azure/con
 ### List tags on container
 `az acr repository show-tags --name mesfContainerRegistry --repository rabbitmq --output table`
 
+## Create cluster AKS
+
+### Prerequisites
+Providers  
+`az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.ContainerService`  
+
