@@ -48,4 +48,14 @@ Providers
 ### Install integrated kubectl
 `az aks install-cli`
 
+### Retrieve credential Locally
+`az aks get-credentials --resource-group Continuousintegration --name mesfAKS`  
+
+> Stored in %HOMEPATH%\.kube\config  
+
+### Verify Kubernete Access
+`kubectl get nodes`  
+
+
+
 
