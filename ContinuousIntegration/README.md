@@ -39,5 +39,13 @@ az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute  
 az provider register -n Microsoft.ContainerService`  
 
+### Create cluster
+`az aks create --resource-group Continuousintegration --name mesfAKS --node-count 1 --generate-ssh-keys`  
+
+> Create also a dedidacated Service Principal : mesfAKS 
+> 03/06/2018 : version 1.9.6  
+
+### Install integrated kubectl
+`az aks install-cli`
 
 
