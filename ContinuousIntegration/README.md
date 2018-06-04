@@ -1,8 +1,8 @@
 # Integration Jenkins AKS
 
 Source :  
-[Azure Quick Start - CICD](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-cicd-container)  
-[Azure - Detailed steps](https://azure.microsoft.com/fr-fr/solutions/architecture/container-cicd-using-jenkins-and-kubernetes-on-azure-container-service/)
+* [Azure Quick Start - CICD](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-cicd-container)  
+* [Azure - Detailed steps](https://azure.microsoft.com/fr-fr/solutions/architecture/container-cicd-using-jenkins-and-kubernetes-on-azure-container-service/)
 
 
 ## Create group
