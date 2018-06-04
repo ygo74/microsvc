@@ -3,7 +3,7 @@
 Source :  
 * [Azure Quick Start - CICD](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-cicd-container)  
 * [Azure - Detailed steps](https://azure.microsoft.com/fr-fr/solutions/architecture/container-cicd-using-jenkins-and-kubernetes-on-azure-container-service/)
-
+* [Azure - AKS with Jenkins](https://docs.microsoft.com/fr-fr/azure/aks/jenkins-continuous-deployment)
 
 ## Create group
 `az group create --name Continuousintegration --location westeurope`
