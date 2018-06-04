@@ -62,4 +62,9 @@ Providers
 ### Browse the dashboard
 `az aks browse --resource-group Continuousintegration --name mesfAKS`
 
+### Connect AKS to ACR
+`$CLIENT_ID=az aks show --resource-group Continuousintegration --name mesfAKS --query "servicePrincipalProfile.clientId" --output tsv  
+$ACR_ID=az acr show --name mesfContainerRegistry  --resource-group Continuousintegration --query "id" --output tsv  
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID`  
 
+> Used with Powershell
