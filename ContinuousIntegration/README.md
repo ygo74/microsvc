@@ -63,8 +63,12 @@ Providers
 `az aks browse --resource-group Continuousintegration --name mesfAKS`
 
 ### Connect AKS to ACR
-`$CLIENT_ID=az aks show --resource-group Continuousintegration --name mesfAKS --query "servicePrincipalProfile.clientId" --output tsv  
-$ACR_ID=az acr show --name mesfContainerRegistry  --resource-group Continuousintegration --query "id" --output tsv  
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID`  
+Source : [Grant Access to ACR](https://docs.microsoft.com/fr-fr/azure/container-registry/container-registry-auth-aks#grant-aks-access-to-acr)
+`$CLIENT_ID=az aks show --resource-group Continuousintegration --name mesfAKS --query "servicePrincipalProfile.clientId" --output tsv`  
+`$ACR_ID=az acr show --name mesfContainerRegistry  --resource-group Continuousintegration --query "id" --output tsv` 
+`az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID`  
 
-> Used with Powershell
+> Used with Powershell  
+
+### First deployment
+> ..\Containers\Kubernetes\rabbitmq-service-management.yml
