@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: rabbitmq-service-management
+spec:
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-service-management
+    spec:
+      containers:
+      - name: rabbitmq-service-management
+        image: mesfcontainerregistry.azurecr.io/rabbitmq:v1
+      ports:
+      - port: 15672
+        name: http
+      selector:
+        app: rabbitmq
+      type: NodePort
