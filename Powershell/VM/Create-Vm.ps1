@@ -5,7 +5,7 @@ Login-AzureRmAccount
 D:\devel\Azure\Init-Config.ps1
 
 
-#Create the resourec group
+#Create the resource group
 $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 if ($resourceGroup -eq $null)
 {
