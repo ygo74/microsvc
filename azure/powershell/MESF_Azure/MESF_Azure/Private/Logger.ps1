@@ -8,7 +8,7 @@ Function Trace-Message
         #Write-Host $Message -ForegroundColor Magenta
         #Check why Verbose is not OK
         $VerbosePreference="Continue"
-        Write-Verbose $Message
+        Write-Verbose ("{0} : $Message" -f [System.DateTime]::Now)
     }
 }
 
@@ -24,7 +24,7 @@ Function Trace-StartFunction
     if ($Debug)
     {
         $watch = [system.diagnostics.stopwatch]::StartNew()         
-        $Message = "{0} : Start {1}" -f [System.DateTime]::Now, $InvocationMethod.Name
+        $Message = "Start {0}" -f $InvocationMethod.Name
         Trace-Message -Message $Message
         return $watch
     }
@@ -42,7 +42,7 @@ Function Trace-EndFunction
     
     if ($Debug)
     {
-        $Message = "{0} : End {1}" -f [System.DateTime]::Now, $InvocationMethod.Name
+        $Message = "End {0}" -f $InvocationMethod.Name
         if ($watcher -ne $null)
         {
            $watcher.Stop(); 

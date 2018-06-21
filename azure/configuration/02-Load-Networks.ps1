@@ -15,6 +15,10 @@ $virtualNetworks=@(
                     Name="MESF_Subnet_back"
                     AddressPrefix="10.0.2.0/24"
                 }
+                @{
+                    Name="MESF_Subnet_admin"
+                    AddressPrefix="10.0.4.0/24"
+                }
             )
         }
 )

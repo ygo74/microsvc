@@ -3,7 +3,7 @@ param(
     [string]$ResourceGroupName,
 
     [Parameter(Mandatory=$true)]
-    [string]$Location,
+    [string]$Location
 )
 
 
