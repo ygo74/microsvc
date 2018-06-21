@@ -1,7 +1,8 @@
 # Preparation
-## Create a resource group  
+## Follow prerequisites  
+* Ensure SSH Public-private key for VM
+* Resource group **ContinuousIntegration** has been created   
 
-> az group create --name ResourceGroupJenkinsCI --location westeurope  
 
 ## Create a VM  
 cloud-init-jenkins.yml file is in ContinuousIntegration  
@@ -15,4 +16,10 @@ az vm create --resource-group Continuousintegration
 --public-ip-address-dns-name jenkins-ci-01
 --custom-data cloud-init-jenkins.yml
 ```
+## Open Internet Access  
+`az vm open-port --resource-group ContinuousIntegration --name JenkinsCI01 --port 8080 --priority 1001`  
+
+## Unlock Jenkins
+Jenkins unlock password : > sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
+
 
