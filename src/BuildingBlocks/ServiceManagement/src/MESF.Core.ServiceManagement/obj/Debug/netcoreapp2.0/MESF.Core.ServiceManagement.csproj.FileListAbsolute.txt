@@ -1,0 +1,12 @@
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\bin\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.deps.json
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\bin\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\bin\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.pdb
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Hosting.Abstractions.xml
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.csprojAssemblyReference.cache
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.csproj.CoreCompileInputs.cache
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.AssemblyInfoInputs.cache
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.AssemblyInfo.cs
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.csproj.CopyComplete
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\MESF.Core.ServiceManagement\obj\Debug\netcoreapp2.0\MESF.Core.ServiceManagement.pdb

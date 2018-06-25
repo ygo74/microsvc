@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sampleservicemanagement.aspnetcore:
+    image: ${DOCKER_REGISTRY}sampleservicemanagementaspnetcore
+    build:
+      context: .
+      dockerfile: ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/Dockerfile

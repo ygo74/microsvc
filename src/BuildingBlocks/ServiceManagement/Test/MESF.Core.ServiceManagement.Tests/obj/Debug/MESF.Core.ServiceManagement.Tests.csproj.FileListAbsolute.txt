@@ -1,0 +1,14 @@
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\MESF.Core.ServiceManagement.Tests.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\MESF.Core.ServiceManagement.Tests.pdb
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\obj\Debug\MESF.Core.ServiceManagement.Tests.csprojAssemblyReference.cache
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\obj\Debug\MESF.Core.ServiceManagement.Tests.csproj.CoreCompileInputs.cache
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\obj\Debug\MESF.Core.ServiceManagement.Tests.csproj.CopyComplete
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\obj\Debug\MESF.Core.ServiceManagement.Tests.dll
+D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\Test\MESF.Core.ServiceManagement.Tests\obj\Debug\MESF.Core.ServiceManagement.Tests.pdb
