@@ -1,1 +1,0 @@
-D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
