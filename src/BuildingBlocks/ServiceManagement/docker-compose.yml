@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY}sampleservicemanagementaspnetcore
     build:
       context: .
-      dockerfile: ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/Dockerfile
+      dockerfile: samples/SampleServiceManagement.AspNetCore/Dockerfile

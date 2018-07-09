@@ -12666,8 +12666,8 @@
     },
     "MESF.Core.ServiceManagement/1.0.0": {
       "type": "project",
-      "path": "../../../src/MESF.Core.ServiceManagement/MESF.Core.ServiceManagement.csproj",
-      "msbuildProject": "../../../src/MESF.Core.ServiceManagement/MESF.Core.ServiceManagement.csproj"
+      "path": "../../src/MESF.Core.ServiceManagement/MESF.Core.ServiceManagement.csproj",
+      "msbuildProject": "../../src/MESF.Core.ServiceManagement/MESF.Core.ServiceManagement.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12684,11 +12684,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore.csproj",
+      "projectUniqueName": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore.csproj",
       "projectName": "SampleServiceManagement.AspNetCore",
-      "projectPath": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore.csproj",
+      "projectPath": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\SampleServiceManagement.AspNetCore\\obj\\",
+      "outputPath": "D:\\devel\\Azure\\git\\microsvc\\src\\BuildingBlocks\\ServiceManagement\\samples\\SampleServiceManagement.AspNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

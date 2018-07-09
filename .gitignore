@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/BuildingBlocks/ServiceManagement/src/.vs
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
+/src/BuildingBlocks/ServiceManagement/.vs/MESF.Core.ServiceManagement/v15
+/src/BuildingBlocks/ServiceManagement/obj/Docker
+/src/BuildingBlocks/ServiceManagement/packages

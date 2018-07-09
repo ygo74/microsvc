@@ -2,7 +2,7 @@ services:
   sampleservicemanagement.aspnetcore:
     build:
       context: D:\devel\Azure\git\microsvc\src\BuildingBlocks\ServiceManagement\src
-      dockerfile: ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/Dockerfile
+      dockerfile: ../samples/SampleServiceManagement.AspNetCore/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
     image: sampleservicemanagementaspnetcore

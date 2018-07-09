@@ -3,11 +3,12 @@ WORKDIR /app
 EXPOSE 80
 
 FROM microsoft/aspnetcore-build:2.0 AS build
-WORKDIR /src
-COPY ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore.csproj ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/
-RUN dotnet restore ../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore.csproj
+WORKDIR .
+COPY samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore.csproj samples/SampleServiceManagement.AspNetCore/
+COPY src/MESF.Core.ServiceManagement/MESF.Core.ServiceManagement.csproj src/MESF.Core.ServiceManagement/
+RUN dotnet restore samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore.csproj
 COPY . .
-WORKDIR /src/../samples/SampleServiceManagement.AspNetCore/SampleServiceManagement.AspNetCore
+WORKDIR samples/SampleServiceManagement.AspNetCore
 RUN dotnet build SampleServiceManagement.AspNetCore.csproj -c Release -o /app
 
 FROM build AS publish

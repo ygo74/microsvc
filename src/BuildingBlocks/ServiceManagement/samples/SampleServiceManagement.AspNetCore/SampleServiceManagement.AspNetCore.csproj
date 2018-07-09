@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\MESF.Core.ServiceManagement\MESF.Core.ServiceManagement.csproj" />
+    <ProjectReference Include="..\..\src\MESF.Core.ServiceManagement\MESF.Core.ServiceManagement.csproj" />
   </ItemGroup>
 
 </Project>

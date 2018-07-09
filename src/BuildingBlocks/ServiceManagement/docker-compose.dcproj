@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>fa320f1f-4dae-4d41-9c63-07b9d9eb45ab</ProjectGuid>
+    <ProjectGuid>17dc3b8d-2248-4e15-b535-03d04c97696f</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/values</DockerServiceUrl>
     <DockerServiceName>sampleservicemanagement.aspnetcore</DockerServiceName>
