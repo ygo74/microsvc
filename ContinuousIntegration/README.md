@@ -64,9 +64,11 @@ Providers
 
 ### Connect AKS to ACR
 Source : [Grant Access to ACR](https://docs.microsoft.com/fr-fr/azure/container-registry/container-registry-auth-aks#grant-aks-access-to-acr)
-`$CLIENT_ID=az aks show --resource-group Continuousintegration --name mesfAKS --query "servicePrincipalProfile.clientId" --output tsv`  
-`$ACR_ID=az acr show --name mesfContainerRegistry  --resource-group Continuousintegration --query "id" --output tsv` 
-`az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID`  
+```powershell
+```$CLIENT_ID=az aks show --resource-group Continuousintegration --name mesfAKS --query "servicePrincipalProfile.clientId" --output tsv    
+```$ACR_ID=az acr show --name mesfContainerRegistry  --resource-group Continuousintegration --query "id" --output tsv   
+```az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID  
+```
 
 > Used with Powershell  
 
