@@ -6,7 +6,7 @@ namespace MESF.Core.ServiceManagement
     {
         public static String GetValue()
         {
-            return "test";
+            return "Success";
         }
     }
 }
