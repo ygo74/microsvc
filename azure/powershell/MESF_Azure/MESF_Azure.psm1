@@ -1,16 +1,15 @@
 
 #Source : https://kevinmarquette.github.io/2017-01-21-powershell-module-continious-delivery-pipeline/?utm_source=blog&utm_medium=blog&utm_content=body&utm_content=module
 
-#$projectRoot = Resolve-Path "$PSScriptRoot\.."
+$projectRoot = Resolve-Path "$PSScriptRoot\.."
 $sourceRoot = [System.IO.Path]::Combine($PSScriptRoot, "MESF_Azure")
-#$moduleRoot = Split-Path (Resolve-Path "$projectRoot\*\*.psm1")
-#$moduleName = Split-Path $moduleRoot -Leaf
+$moduleRoot = Split-Path (Resolve-Path "$projectRoot\*\*.psm1")
+$moduleName = Split-Path $moduleRoot -Leaf
 
 Write-Verbose "Importing Functions"
 
-<#
 # Import everything in these folders
-foreach($folder in @('Private'))
+foreach($folder in @('Cross-Cutting','Core'))
 {
     
     $root = [System.IO.Path]::Combine($PSScriptRoot, "MESF_Azure", $folder)
@@ -25,6 +24,4 @@ foreach($folder in @('Private'))
     }
 }
 
-<#
-Export-ModuleMember -Function (Get-ChildItem -Path "$sourceRoot\Public\*.ps1").basename
-#>
+#Export-ModuleMember -Function (Get-ChildItem -Path "$sourceRoot\Public\*.ps1").basename

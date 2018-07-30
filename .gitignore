@@ -3,6 +3,7 @@
 ################################################################################
 
 /.vs
+*/**/.vs
 /src/BuildingBlocks/ServiceManagement/src/.vs
 */**/bin/Debug
 */**/bin/Release

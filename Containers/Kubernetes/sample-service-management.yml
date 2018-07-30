@@ -10,9 +10,9 @@ spec:
     spec:
       containers:
       - name: sample-service-management
-        image: mesfcontainerregistry.azurecr.io/test-image:19
+        image: mesfcontainerregistry.azurecr.io/test-image:latest
       ports:
-      - port: 8080
+      - port: 80
         name: http
       selector:
         app: sample-service-management
