@@ -9,7 +9,7 @@ $moduleName = Split-Path $moduleRoot -Leaf
 Write-Verbose "Importing Functions"
 
 # Import everything in these folders
-foreach($folder in @('Cross-Cutting','Core'))
+foreach($folder in @('Models', 'Cross-Cutting','Core','Network','VirtualMachines'))
 {
     
     $root = [System.IO.Path]::Combine($PSScriptRoot, "MESF_Azure", $folder)

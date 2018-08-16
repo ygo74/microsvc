@@ -58,3 +58,40 @@ function Test-Resource
 
 }
 #Export-ModuleMember -Function Test-Resource
+
+
+
+function Set-ResourceGroup
+{
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+
+        [Parameter(Mandatory=$true)]
+        [string]$Location
+    )
+
+    begin
+    {
+        $watch = Trace-StartFunction -InvocationMethod $MyInvocation.MyCommand
+    }
+
+    end
+    {
+        Trace-EndFunction -InvocationMethod $MyInvocation.MyCommand -watcher $watch
+    }
+    Process
+    {
+
+        #Create the resource group
+        $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -Location $location -ErrorAction SilentlyContinue
+
+        if ($null -eq $resourceGroup)
+        {
+            Trace-Message -Message ("Resource Group '{0}' doesn't exist, it will be created" -f $ResourceGroupName)
+            $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        }
+
+        $resourceGroup
+    }
+}    
