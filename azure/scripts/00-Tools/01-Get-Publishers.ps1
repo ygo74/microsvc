@@ -6,4 +6,4 @@ Get-AzureRmVMExtensionImage -Location $queryLocation -PublisherName "Canonical"
 
 Get-AzureRmVmImagePublisher -Location $queryLocation | `
 Get-AzureRmVMExtensionImageType | `
-Get-AzureRmVMExtensionImage | Select Type, Version
+Get-AzureRmVMExtensionImage | Select-Object Type, Version

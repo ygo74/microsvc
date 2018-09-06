@@ -90,11 +90,11 @@ Function Set-VirtualMachine
             }
 
             #Check if Image exists
-            $images = Get-AzureRmVMImage -PublisherName $VirtualMachine.Publisher `
-                                        -Offer $VirtualMachine.Offer `
-                                        -Skus $VirtualMachine.skus `
-                                        -location $Location `
-                                        -ErrorAction Stop
+            Get-AzureRmVMImage -PublisherName $VirtualMachine.Publisher `
+                                -Offer $VirtualMachine.Offer `
+                                -Skus $VirtualMachine.skus `
+                                -location $Location `
+                                -ErrorAction Stop
 
             #Add images to the VM
             Set-AzureRmVMSourceImage -VM $VMConfig `
