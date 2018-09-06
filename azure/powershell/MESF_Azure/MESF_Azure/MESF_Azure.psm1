@@ -3,6 +3,7 @@
 
 $projectRoot = Resolve-Path "$PSScriptRoot\.."
 $sourceRoot = [System.IO.Path]::Combine($PSScriptRoot, "MESF_Azure")
+$sourceRoot = $projectRoot 
 $moduleRoot = Split-Path (Resolve-Path "$projectRoot\*\*.psm1")
 $moduleName = Split-Path $moduleRoot -Leaf
 
@@ -12,7 +13,7 @@ Write-Verbose "Importing Functions"
 foreach($folder in @('Models', 'Cross-Cutting','Core','Network','VirtualMachines'))
 {
     
-    $root = [System.IO.Path]::Combine($PSScriptRoot, "MESF_Azure", $folder)
+    $root = [System.IO.Path]::Combine($sourceRoot, "MESF_Azure", $folder)
     if(Test-Path -Path $root)
     {
         Write-Verbose "processing folder $root"

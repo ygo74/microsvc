@@ -1,4 +1,5 @@
 #https://docs.microsoft.com/en-sg/azure/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-vm-oms?toc=%2Fpowershell%2Fmodule%2Ftoc.json
+
 Function Set-VirtualMachine
 {
     [cmdletbinding(DefaultParameterSetName="none")]
@@ -37,15 +38,12 @@ Function Set-VirtualMachine
         {
             
             $PublicIpAddressId = $null
-            if ($VirtualMachine.PublicIp)
-            {
-                $publicip = Set-PublicIP -ResourceGroupName $ResourceGroupName -Location $Location `
-                             -Name $VirtualMachine.PublicIp.Name `
-                             -Alias $VirtualMachine.PublicIp.Alias 
+            $publicip = Set-PublicIP -ResourceGroupName $ResourceGroupName -Location $location `
+                             -Name $publicIpName `
+                             -Alias ("{0}-{1}" -f $ResourceGroupName.ToLower(), $VirtualMachine.Name.ToLower())
 
-                $PublicIpAddressId = $publicip.Id
-                Trace-Message -Message ("Public IP '{0}' is identified with id '{1}'" -f $VirtualMachine.PublicIp.Name, $PublicIpAddressId)
-            }
+            $PublicIpAddressId = $publicip.Id
+            Trace-Message -Message ("Public IP '{0}' is identified with id '{1}'" -f $VirtualMachine.PublicIp.Name, $PublicIpAddressId)
 
             $subnet = Get-NetworkSubNet -ResourceGroupName $ResourceGroupName -Location $Location `
                         -NetworkName $virtualMachine.NetworkName `
@@ -68,7 +66,8 @@ Function Set-VirtualMachine
                                                     -Windows `
                                                     -ComputerName $VirtualMachine.ComputerName `
                                                     -Credential $cred `
-                                                    -ProvisionVMAgent -EnableAutoUpdate 
+                                                    -ProvisionVMAgent -EnableAutoUpdate `
+                                                    -WinRMHttp
                     }
                 "linux"
                     { 

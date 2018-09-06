@@ -1,3 +1,5 @@
+#peering 2 vnet : https://docs.microsoft.com/fr-fr/azure/virtual-network/tutorial-connect-virtual-networks-portal
+
 Function Set-VirtualNetwork
 {
     [cmdletbinding(DefaultParameterSetName="none")]
