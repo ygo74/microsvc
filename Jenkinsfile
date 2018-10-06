@@ -8,7 +8,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        readFile 'README.MD'
+        readFile 'README.md'
       }
     }
   }
