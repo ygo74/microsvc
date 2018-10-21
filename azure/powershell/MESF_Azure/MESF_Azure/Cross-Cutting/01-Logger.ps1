@@ -8,7 +8,7 @@ Function Trace-Message
         #Write-Host $Message -ForegroundColor Magenta
         #Check why Verbose is not OK
         $VerbosePreference="Continue"
-        Write-Verbose ("{0} : $Message" -f [System.DateTime]::Now)
+        Write-Verbose (("{0} : " -f [System.DateTime]::Now) + $Message)
     }
 }
 

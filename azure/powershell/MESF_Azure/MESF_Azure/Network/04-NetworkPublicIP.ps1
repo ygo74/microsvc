@@ -11,8 +11,12 @@ Function Set-PublicIP
         [Parameter(Mandatory=$true)]
         [String]$Name,
 
-        [Parameter(Mandatory=$true)]
-        [String]$Alias
+        [Parameter(Mandatory=$false)]
+        [String]$Alias,
+
+        [ValidateSet("Static", "Dynamic")]
+        [Parameter(Mandatory=$false)]
+        [String]$AllocationMethod="Static"
 
     )
     begin
@@ -37,12 +41,26 @@ Function Set-PublicIP
         if ($null -eq $publicIp)
         {
             Trace-Message -Message ("Public IP '{0}' in resourceGroup '{1}' doesn't exist, it will be created" -f $Name, $ResourceGroupName)
-            $publicIp = New-AzureRmPublicIpAddress -Name $Name `
-                                                -ResourceGroupName $ResourceGroupName `
-                                                -Location $Location `
-                                                -AllocationMethod Static `
-                                                -IdleTimeoutInMinutes 4 `
-                                                -DomainNameLabel $Alias
+
+            if ($null -eq $IdleTimeoutInMinutes)
+            {
+                $IdleTimeoutInMinutes = 4
+            }
+
+            $publicIpParams = @{
+                Name = $Name
+                ResourceGroupName = $ResourceGroupName
+                Location = $Location
+                AllocationMethod = $AllocationMethod                
+                IdleTimeoutInMinutes = $IdleTimeoutInMinutes
+            }
+
+            if (![String]::IsNullOrEmpty($Alias))
+            {
+                $publicIpParams.Add("DomainNameLabel", $Alias)
+            }
+
+            $publicIp = New-AzureRmPublicIpAddress @publicIpParams -ErrorAction Stop
         }
 
         write-output $publicIp

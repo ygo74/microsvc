@@ -37,8 +37,8 @@ $Global:PublicIps=@{
 
 $global:VirtualMachines=@(
         New-Object -TypeName PsObject -Property @{
-            Name="Vm1"
-            ComputerName="srv1"
+            Name="MssqlDefault"
+            ComputerName="win-mssql-1"
             Size="Standard_DS1_v2"
             Type="Windows"
             Publisher="MicrosoftWindowsServer"
@@ -52,8 +52,8 @@ $global:VirtualMachines=@(
             SubnetName="Ansible-lab_Subnet_front"
         }
         New-Object -TypeName PsObject -Property @{
-            Name="Vm2"
-            ComputerName="srv2"
+            Name="AnsibleController"
+            ComputerName="ansible-1"
             Size="Standard_DS1_v2"
             Type="Linux"
             Publisher="Canonical"

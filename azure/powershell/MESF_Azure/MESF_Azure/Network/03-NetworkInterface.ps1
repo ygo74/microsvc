@@ -9,7 +9,7 @@ function Set-NetworkInterface
         [string]$Location,
 
         [Parameter(Mandatory=$true)]
-        [string]$TargetName,
+        [string]$Name,
 
         [Parameter(Mandatory=$true, ValueFromPipeline=$True, ValueFromPipelineByPropertyName=$True)]
         [Microsoft.Azure.Commands.Network.Models.PSSubnet]$Subnet,
@@ -31,19 +31,17 @@ function Set-NetworkInterface
     }
     Process
     {
-        $NICName        = [String]::Format("{0}_nic_{1}", $ResourceGroupName , $TargetName)
-
-        Trace-Message -Message ("Try to retrieve Network Interface '{0}' in resourceGroup '{1}'" -f $TargetName, $ResourceGroupName)
-        $nic = Get-AzureRmNetworkInterface  -Name $NICName `
+        Trace-Message -Message ("Try to retrieve Network Interface '{0}' in resourceGroup '{1}'" -f $Name, $ResourceGroupName)
+        $nic = Get-AzureRmNetworkInterface  -Name $Name `
                                             -ResourceGroupName $ResourceGroupName `
                                             -ErrorAction SilentlyContinue
 
         if ($nic -eq $null)
         {
 
-            Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' doesn't exist, it will be created" -f $TargetName, $ResourceGroupName)
+            Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' doesn't exist, it will be created" -f $Name, $ResourceGroupName)
             $networkInterfacesDefinition = @{
-                Name = $NICName
+                Name = $Name
                 ResourceGroupName = $ResourceGroupName
                 Location = $Location
                 SubnetId = $Subnet.Id
@@ -59,14 +57,14 @@ function Set-NetworkInterface
         else {
             if ($nic.IpConfigurations[0].Subnet.Id -ne $Subnet.Id)
             {
-                Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' will move to subnet {2}" -f $TargetName, $ResourceGroupName, $Subnet.Id)
+                Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' will move to subnet {2}" -f $Name, $ResourceGroupName, $Subnet.Id)
                 $nic.IpConfigurations[0].Subnet.Id = $Subnet.Id    
             }
 
             if (($nic.IpConfigurations[0].PublicIpAddressId -ne $PublicIpAddressId) `
                 -and (![String]::IsNullOrEmpty($PublicIpAddressId)))
             {
-                Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' will be associate to other PublicIp '{2}'" -f $TargetName, $ResourceGroupName, $PublicIpAddressId)
+                Trace-Message -Message ("Network Interface '{0}' in resourceGroup '{1}' will be associate to other PublicIp '{2}'" -f $Name, $ResourceGroupName, $PublicIpAddressId)
                 $nic.IpConfigurations[0].PublicIpAddress.Id = $PublicIpAddressId
             }
 

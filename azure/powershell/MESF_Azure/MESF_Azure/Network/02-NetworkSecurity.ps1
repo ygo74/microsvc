@@ -71,15 +71,32 @@ function ConvertTo-AzureRMSecurityRule
         $description = "Network Secuirty rule : {0}" -f $InputObject.Name
     }
 
-    New-AzureRmNetworkSecurityRuleConfig -Name     $InputObject.Name `
-                        -Description               $description `
-                        -Protocol                  $InputObject.Protocol `
-                        -Direction                 $InputObject.Direction `
-                        -Priority                  $InputObject.Priority `
-                        -SourcePortRange           $InputObject.SourcePortRange `
-                        -SourceAddressPrefix       $InputObject.SourceAddressPrefix `
-                        -DestinationPortRange      $InputObject.DestinationPortRange `
-                        -DestinationAddressPrefix  $InputObject.DestinationAddressPrefix
+    # New-AzureRmNetworkSecurityRuleConfig -Name     $InputObject.Name `
+    #                     -Description               $description `
+    #                     -Protocol                  $InputObject.Protocol `
+    #                     -Direction                 $InputObject.Direction `
+    #                     -Priority                  $InputObject.Priority `
+    #                     -SourcePortRange           $InputObject.SourcePortRange `
+    #                     -SourceAddressPrefix       $InputObject.SourceAddressPrefix `
+    #                     -DestinationPortRange      $InputObject.DestinationPortRange `
+    #                     -DestinationAddressPrefix  $InputObject.DestinationAddressPrefix
+
+    $properties = @{}
+    
+    $InputObject.Psobject.Properties | ForEach-Object {
+
+        if (($_.Name -eq "Description") -and ([String]::IsNullOrEmpty($_.Value)))
+        {
+            $properties.Add($_.Name, "rule for $($InputObject.Name)")
+        }
+        else {
+            $properties.Add($_.Name, $_.Value)
+        }
+
+        
+    }
+
+    New-AzureRmNetworkSecurityRuleConfig @properties
 
 }        
 
@@ -110,19 +127,87 @@ function Set-NetworkSecurityGroup
     }
     Process
     {
+
+        $securityRules = @()
+        $Rules | ConvertTo-AzureRMSecurityRule | ForEach-Object {
+            $securityRules +=  $_
+        }
+      
         $securityGroup = Get-AzureRmNetworkSecurityGroup -Name $Name `
                              -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue
 
-        if (-$null -eq $securityGroup)
+        if ($null -eq $securityGroup)
         {
             Trace-Message -Message ("Security group '{0}' in resourceGroup '{1}' doesn't exist, it will be created")
             $securityGroup = New-AzureRmNetworkSecurityGroup -Name $Name `
                                 -ResourceGroupName $ResourceGroupName -Location $Location `
-                                -SecurityRules
+                                -SecurityRules $securityRules
         }
         else {
-            $securityGroup.SecurityRules 
+
+            Trace-Message -Message ("Security group '{0}' in resourceGroup '{1}' already exist, it will be updated")
+            $securityGroup.SecurityRules = $securityRules
+            Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $securityGroup
         }
 
+        write-output $securityGroup
+
+    }
+}
+
+#http://blog.e-novatic.fr/application-security-group-dans-azure/
+function Set-ApplicationSecurityGroup
+{
+    [cmdletbinding(DefaultParameterSetName="none")]
+    Param( 
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+    
+        [Parameter(Mandatory=$true)]
+        [string]$Location,
+
+        [Parameter(Mandatory=$true)]
+        [string]$Name,
+
+        [Parameter(Mandatory=$true)]
+        [NetworkRule[]]$Rules
+    )
+    begin
+    {
+        $watch = Trace-StartFunction -InvocationMethod $MyInvocation.MyCommand
+    }
+
+    end
+    {
+        Trace-EndFunction -InvocationMethod $MyInvocation.MyCommand -watcher $watch
+    }
+    Process
+    {
+        Register-AzureRmProviderFeature   -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+        Register-AzureRmResourceProvider  -ProviderNamespace Microsoft.Network
+
+        #Create ASG
+        $webASG  =  new-AzureRmApplicationSecurityGroup  -ResourceGroupName $ResourceGroupName -Name $Name -Location $Location
+
+        #Create NGS avec AGS
+        $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName RGTEST -Location westurope -Name ASGTEST `
+                      -SecurityRules $webRule,$sqlRule                       
+
+        #Assign NGS to subnet
+        $vnet = Get-AzureRmVirtualNetwork -Name ASGTEST -ResourceGroupName RGTEST
+        Set-AzureRmVirtualNetworkSubnetConfig -Name default -VirtualNetwork $vnet `
+                      -NetworkSecurityGroupId $nsg.Id -AddressPrefix '10.1.0.0/16'
+
+        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet                              
+
+        #Add NICS to AGS
+        $webNic = Get-AzureRmNetworkInterface -Name NICNAME -ResourceGroupName RGTEST
+        $webNic.IpConfigurations[0].ApplicationSecurityGroups = $webASG
+        Set-AzureRmNetworkInterface -NetworkInterface $webNic
+        
+        $sqlNic = Get-AzureRmNetworkInterface -Name NICNAME -ResourceGroupName RGTEST
+        $sqlNic.IpConfigurations[0].ApplicationSecurityGroups = $sqlASG
+        Set-AzureRmNetworkInterface -NetworkInterface $sqlNic        
+                      
     }
 }

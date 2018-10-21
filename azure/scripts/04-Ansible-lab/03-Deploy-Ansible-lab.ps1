@@ -1,15 +1,16 @@
 if ([String]::IsNullOrEmpty($PSScriptRoot)) {
-    $rootScriptPath = "D:\devel\Azure\git\microsvc\azure\scripts"
+    $rootScriptPath = "D:\devel\Azure\git\microsvc\azure\scripts\04-Ansible-lab"
 }
 else {
     $rootScriptPath = $PSScriptRoot
 }    
 
-$ModulePath = "$rootScriptPath\..\powershell\MESF_Azure\MESF_Azure\MESF_Azure.psd1" 
+$ModulePath = "$rootScriptPath\..\..\powershell\MESF_Azure\MESF_Azure\MESF_Azure.psd1" 
 Import-Module $ModulePath -force
 
 
-& "$rootScriptPath\..\configuration\04-Ansible-lab.ps1"
+#Load Ansible lab configuration
+& "$rootScriptPath\00-Configuration.ps1"
 
 Set-ResourceGroup -ResourceGroupName $ResourceGroupName -Location $Location
 
@@ -48,12 +49,22 @@ foreach($virtualMachine in $virtualMachines)
 # sudo rm -rf /usr/lib/python2.7/dist-packages/OpenSSL/
 # sudo pip install pyOpenSSL
 
-
-$PublicSettings = '{"commandToExecute":"apt-get update && apt-get --assume-yes install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get update && apt-get --assume-yes install ansible"}'
-Set-AzureRmVMExtension -ExtensionName "Ansible" -ResourceGroupName $ResourceGroupName -VMName "Vm2" `
+$Vm2Extensions = @(
+        $AzureRmVMExtensionsLinux.PythonPackager, 
+        $AzureRmVMExtensionsLinux.Ansible, 
+        $AzureRmVMExtensionsLinux.AnsibleWindowsRequirement)
+$PublicSettings = '{"commandToExecute": "' + ($Vm2Extensions -join ';') + '"}'
+Set-AzureRmVMExtension -ExtensionName "Ansible" -ResourceGroupName $ResourceGroupName -VMName "AnsibleController" `
   -Publisher "Microsoft.Azure.Extensions" -ExtensionType "CustomScript" -TypeHandlerVersion 2.0 `
   -SettingString $PublicSettings -Location $location
 
+
+$Vm1Extensions = @($AzureRmVMExtensionsWindows.WinrmActivation)
+$PublicSettings = '{"commandToExecute": "' + ($Vm1Extensions -join ';') + '"}'
+Set-AzureRmVMExtension -ExtensionName "WinRmActivation" -ResourceGroupName $ResourceGroupName -VMName "MssqlDefault" `
+-Publisher "Microsoft.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion 1.9 `
+-SettingString $PublicSettings -Location $location
+  
 
 #winrm basic
 # winrm set winrm/config/client/auth @{Basic="true"} 
