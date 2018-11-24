@@ -6,3 +6,6 @@ services:
     build:
       context: .
       dockerfile: samples/SampleServiceManagement.AspNetCore/Dockerfile
+
+  rabbitmq:
+    image: rabbitmq:3-management

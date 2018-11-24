@@ -6,3 +6,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+  
+  rabbitmq:
+    ports:
+      - "15672:15672"
+      - "5672:5672"
