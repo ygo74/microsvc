@@ -31,7 +31,7 @@ namespace SampleServiceManagement.AspNetCore.Controllers
         [HttpGet("{key}")]
         public string Get(String key)
         {
-            return _messaging.GetMessagingConfiguration(key);
+            return String.Format("value for key {0} : {1}", key, _messaging.GetMessagingConfiguration(key));
         }
 
         // POST api/values
