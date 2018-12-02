@@ -20,6 +20,11 @@ namespace SampleServiceManagement.AspNetCore
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureAppConfiguration((builderContext,config) =>
+                {
+                    config.AddEnvironmentVariables();
+                    config.Build();
+                })
                 .Build();
     }
 }

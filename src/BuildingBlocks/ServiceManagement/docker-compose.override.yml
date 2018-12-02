@@ -4,6 +4,7 @@ services:
   sampleservicemanagement.aspnetcore:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - Messaging__HostName=172.23.195.113
     ports:
       - "80"
   

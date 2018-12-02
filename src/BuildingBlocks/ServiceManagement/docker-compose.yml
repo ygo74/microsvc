@@ -7,5 +7,8 @@ services:
       context: .
       dockerfile: samples/SampleServiceManagement.AspNetCore/Dockerfile
 
+    depends_on:
+    - rabbitmq
+
   rabbitmq:
     image: rabbitmq:3-management
