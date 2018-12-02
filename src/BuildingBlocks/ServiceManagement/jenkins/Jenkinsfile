@@ -1,42 +1,64 @@
-podTemplate(label: 'slave', containers: [
+podTemplate(label: 'slave-new', containers: [
     containerTemplate(name: 'docker', image: 'docker:dind', ttyEnabled: true, alwaysPullImage: true, privileged: true,
       command: 'dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay',
+      volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]),
+    containerTemplate(name: 'helm', image: 'goloxxly/jenkins-jnlp-client-helm', ttyEnabled: true, alwaysPullImage: true, privileged: true,
+      command: 'cat',
       volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')])
   ],
   volumes: [emptyDirVolume(memory: false, mountPath: '/var/lib/docker')]) {
 
-  node('slave') {
-  
-    stage('Run a docker thing') {
-        container('docker') {
-            withCredentials([usernamePassword(credentialsId: 'acrIdentifiants', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USER')]) {
-            // some block
-            sh 'docker login mesfcontainerregistry.azurecr.io -u ${ACR_USER} -p ${ACR_PASSWORD}'
+
+    node('slave-new') {
+
+
+        stage('Build image') {
+            container('docker') {
+                withCredentials([usernamePassword(credentialsId: 'acrIdentifiants', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USER')]) {
+                // some block
+                sh 'docker login mesfcontainerregistry.azurecr.io -u ${ACR_USER} -p ${ACR_PASSWORD}'
+                }            
+                
+                
+                
+                checkout(
+                    [$class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    browser: [$class: 'GithubWeb', repoUrl: ''], 
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: 'https://github.com/ygo74/microsvc.git']]]
+                    )
+                // sh 'docker info'
+                sh 'docker build -t mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER} -f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement'
+                sh 'docker push mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER}'
+                // sh 'docker images'
+                //src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile
+                //app = docker.build("ygo:0.1","-f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement")
+                
+                //stage 'docker exec'
+                //app.inside {
+                //  sh 'ls -alh'
+                //}
+                
+                stash "Sources"
             }            
-            
-            
-            
-            checkout(
-                [$class: 'GitSCM',
-                branches: [[name: '*/master']],
-                browser: [$class: 'GithubWeb', repoUrl: ''], 
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [],
-                submoduleCfg: [],
-                userRemoteConfigs: [[url: 'https://github.com/ygo74/microsvc.git']]]
-                )
-            // sh 'docker info'
-            sh 'docker build -t mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER} -f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement'
-            sh 'docker push mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER}'
-            // sh 'docker images'
-            //src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile
-            //app = docker.build("ygo:0.1","-f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement")
-            
-            //stage 'docker exec'
-            //app.inside {
-            //  sh 'ls -alh'
-            //}
-        }            
+        }
+
+
+
+        stage('Deploy to Kubernetes') {
+
+            container('helm') {
+
+                // example to show you can run docker commands when you mount the socket
+
+                unstash "Sources"
+                
+                sh 'kubectl set image deployment/sampleservicemanagementasp sampleservicemanagementasp=mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER}'
+
+            }
+        }
     }
-  }
-}
+  }    
