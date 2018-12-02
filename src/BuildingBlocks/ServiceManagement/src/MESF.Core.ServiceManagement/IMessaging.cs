@@ -6,5 +6,7 @@ namespace MESF.Core.ServiceManagement
     {
         string ConsumeMessage();
         bool PublishMessage();
+        String GetMessagingConfiguration(String configurationKey);
+
     }
 }

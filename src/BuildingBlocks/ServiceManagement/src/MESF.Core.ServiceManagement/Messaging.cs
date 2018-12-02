@@ -17,6 +17,12 @@ namespace MESF.Core.ServiceManagement
             _config = config;
         }
 
+        public String GetMessagingConfiguration(String configurationKey)
+        {
+            return _config.GetValue<String>(configurationKey,"Not defined");
+        }
+
+
         public Boolean PublishMessage()
         {
 

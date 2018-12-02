@@ -28,10 +28,10 @@ namespace SampleServiceManagement.AspNetCore.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{key}")]
+        public string Get(String key)
         {
-            return "";
+            return _messaging.GetMessagingConfiguration(key);
         }
 
         // POST api/values
