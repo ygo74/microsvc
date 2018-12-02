@@ -1,25 +1,21 @@
 podTemplate(label: 'slave', containers: [
     containerTemplate(name: 'docker', image: 'docker:dind', ttyEnabled: true, alwaysPullImage: true, privileged: true,
       command: 'dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay',
-      volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]),
-    containerTemplate(name: 'docker2', image: 'docker', ttyEnabled: true,
-      command: '',
       volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')])
   ],
   volumes: [emptyDirVolume(memory: false, mountPath: '/var/lib/docker')]) {
 
   node('slave') {
   
-    stage('Run a non-docker thing') {
-        container('docker') {
-          sh 'echo test'
-          sh 'hostname -f'
-          //sh 'sleep 3'
-        }      
-    }
-
     stage('Run a docker thing') {
         container('docker') {
+            withCredentials([usernamePassword(credentialsId: 'acrIdentifiants', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USER')]) {
+            // some block
+            sh 'docker login mesfcontainerregistry.azurecr.io -u ${ACR_USER} -p ${ACR_PASSWORD}'
+            }            
+            
+            
+            
             checkout(
                 [$class: 'GitSCM',
                 branches: [[name: '*/master']],
@@ -30,7 +26,8 @@ podTemplate(label: 'slave', containers: [
                 userRemoteConfigs: [[url: 'https://github.com/ygo74/microsvc.git']]]
                 )
             // sh 'docker info'
-            sh 'docker build -t ygo:0.1 -f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement'
+            sh 'docker build -t mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER} -f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement'
+            sh 'docker push mesfcontainerregistry.azurecr.io/ygo:${BUILD_NUMBER}'
             // sh 'docker images'
             //src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile
             //app = docker.build("ygo:0.1","-f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement")

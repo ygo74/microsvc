@@ -15,7 +15,12 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MESF.Core.ServiceManagement.Tests", "unittests\MESF.Core.ServiceManagement.Tests\MESF.Core.ServiceManagement.Tests.csproj", "{F5EA0375-1B45-4E49-9198-3ABA445F0F38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MESF.Core.ServiceManagement.Tests", "unittests\MESF.Core.ServiceManagement.Tests\MESF.Core.ServiceManagement.Tests.csproj", "{F5EA0375-1B45-4E49-9198-3ABA445F0F38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jenkins", "Jenkins", "{91BF1FCA-8B8A-453D-A2E9-89A40EF6608E}"
+	ProjectSection(SolutionItems) = preProject
+		jenkins\Jenkinsfile = jenkins\Jenkinsfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
