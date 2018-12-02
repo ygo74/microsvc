@@ -13,7 +13,7 @@ RUN dotnet build SampleServiceManagement.AspNetCore.csproj -c Release -o /app
 FROM build AS publish
 RUN dotnet publish SampleServiceManagement.AspNetCore.csproj -c Release -o /app
 
-FROM base
+FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "SampleServiceManagement.AspNetCore.dll"]

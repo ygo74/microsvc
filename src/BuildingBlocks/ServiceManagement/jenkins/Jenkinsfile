@@ -15,7 +15,6 @@ podTemplate(label: 'slave', containers: [
           sh 'echo test'
           sh 'hostname -f'
           //sh 'sleep 3'
-          sh 'docker info'
         }      
     }
 
@@ -31,10 +30,10 @@ podTemplate(label: 'slave', containers: [
                 userRemoteConfigs: [[url: 'https://github.com/ygo74/microsvc.git']]]
                 )
             // sh 'docker info'
-            // sh 'docker build -t rmwpl/test:latest .'
+            sh 'docker build -t ygo:0.1 -f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement'
             // sh 'docker images'
             //src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile
-            app = docker.build("ygo:0.1","-f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement")
+            //app = docker.build("ygo:0.1","-f ./src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/Dockerfile ./src/BuildingBlocks/ServiceManagement")
             
             //stage 'docker exec'
             //app.inside {
