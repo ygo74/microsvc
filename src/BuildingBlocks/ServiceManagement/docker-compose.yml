@@ -9,6 +9,17 @@ services:
 
     depends_on:
     - rabbitmq
+    - sql.data
 
   rabbitmq:
     image: rabbitmq:3-management
+
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
+
+#  nosql.data:
+#    image: mongo
+#networks:
+#  default:
+#    external:
+#      name: nat

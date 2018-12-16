@@ -12,3 +12,10 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+
+  sql.data:
+    environment:
+      - SA_PASSWORD=Pass@word.1
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"    # Important: In a production environment your should remove the external port

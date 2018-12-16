@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MESF.Core.ServiceManagement;
+using MESF.Core.ServiceManagement.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace SampleServiceManagement.AspNetCore
 {
@@ -27,6 +30,10 @@ namespace SampleServiceManagement.AspNetCore
             services.AddMvc();
 
             services.AddTransient<IMessaging, Messaging>();
+
+            services.AddDbContext<ServiceManagementDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ServicesConnection"))
+            );
 
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MESF.Core.ServiceManagement.Infrastructure;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,15 @@ namespace SampleServiceManagement.AspNetCore
                 .UseStartup<Startup>()
                 .ConfigureAppConfiguration((builderContext,config) =>
                 {
+
+                    //ServiceManagementDbContext ctx = new ServiceManagementDbContext();
+
+                    //ctx.Services.Add(new MESF.Core.ServiceManagement.Domain.Service()
+                    //{
+                    //    Name = "test"
+                    //});
+                    //ctx.SaveChanges();
+
                     config.AddEnvironmentVariables();
                     config.Build();
                 })
