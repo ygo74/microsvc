@@ -4,7 +4,8 @@ services:
   sampleservicemanagement.aspnetcore:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - Messaging__HostName=172.23.195.113
+      - Messaging__HostName=rabbitmq
+      - ConnectionStrings__ServicesConnection=Server=sql.data;Database=TestDB;User Id=sa;Password=Pass@word.1
     ports:
       - "80"
   

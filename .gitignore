@@ -13,3 +13,4 @@
 /src/BuildingBlocks/ServiceManagement/obj/Docker
 /src/BuildingBlocks/ServiceManagement/packages
 /src/BuildingBlocks/ServiceManagement/obj
+/src/BuildingBlocks/ServiceManagement/samples/SampleServiceManagement.AspNetCore/obj/Docker/publish

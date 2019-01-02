@@ -1,18 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MESF.Core.ServiceManagement.Migrations
 {
-    public partial class TestDB : Migration
+    public partial class InitDB_v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence(
+                name: "catalog_hilo",
+                incrementBy: 10);
+
             migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
-                    ServiceId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Version = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -20,7 +22,7 @@ namespace MESF.Core.ServiceManagement.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Services", x => x.ServiceId);
+                    table.PrimaryKey("PK_Services", x => x.Id);
                 });
         }
 
@@ -28,6 +30,9 @@ namespace MESF.Core.ServiceManagement.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Services");
+
+            migrationBuilder.DropSequence(
+                name: "catalog_hilo");
         }
     }
 }

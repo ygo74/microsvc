@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MESF.Core.ServiceManagement.Infrastructure
+namespace MESF.Core.ServiceManagement.Infrastructure.Data
 {
-    public class ServiceManagementDbContext : DbContext
+    public class ServiceManagementContext : DbContext
     {
         public DbSet<HostedService> Services { get; set; }
 
@@ -17,7 +17,7 @@ namespace MESF.Core.ServiceManagement.Infrastructure
         //    //base.OnConfiguring(optionsBuilder);
         //}
 
-        public ServiceManagementDbContext(DbContextOptions<ServiceManagementDbContext> options) : base(options)
+        public ServiceManagementContext(DbContextOptions<ServiceManagementContext> options) : base(options)
         {
 
         }
