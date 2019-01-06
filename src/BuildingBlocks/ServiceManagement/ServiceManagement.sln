@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleServiceManagement.Asp
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F4D29FC4-F371-4CC1-B556-4B31051C85F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MESF.Core.ServiceManagement.Tests", "unittests\MESF.Core.ServiceManagement.Tests\MESF.Core.ServiceManagement.Tests.csproj", "{F5EA0375-1B45-4E49-9198-3ABA445F0F38}"
 EndProject

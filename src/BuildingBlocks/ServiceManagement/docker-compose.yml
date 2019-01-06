@@ -13,10 +13,29 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
 
   sql.data:
-    image: microsoft/mssql-server-linux:2017-latest
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S localhost -U SA -P 'Pass@word.1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    
+    volumes:
+    - type: bind
+      source: D:\devel\temp\sql_db_docker\service_management
+      target: /var/opt/mssql
 
+#volumes:
+#  sql_data_service_management:
+#    external: true
 #  nosql.data:
 #    image: mongo
 #networks:
