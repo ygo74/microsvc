@@ -22,6 +22,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jenkins", "Jenkins", "{91BF
 		jenkins\Jenkinsfile = jenkins\Jenkinsfile
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", "{3D2883C2-56EB-4F7F-8C95-533B8E4E684F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Containers\Kubernetes\sample-service-management.yml = ..\..\..\Containers\Kubernetes\sample-service-management.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

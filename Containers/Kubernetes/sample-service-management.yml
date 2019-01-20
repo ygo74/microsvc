@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: sample-service-management
-        image: mesfcontainerregistry.azurecr.io/test-image:latest
+        image: mesfcontainerregistry.azurecr.io/ygo:4
       ports:
       - port: 80
         name: http
