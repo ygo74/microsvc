@@ -14,6 +14,53 @@
           "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
         }
       },
+      "AspNetCore.HealthChecks.Rabbitmq/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "2.2.0",
+          "RabbitMQ.Client": "5.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.RabbitMQ.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.RabbitMQ.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.UI/2.2.8": {
+        "type": "package",
+        "dependencies": {
+          "AspNetCore.HealthChecks.UI.Client": "2.2.2",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.6",
+          "Microsoft.Extensions.Configuration.Binder": "2.2.0",
+          "Microsoft.Extensions.Http": "2.2.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.UI.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.UI.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.UI.Client/2.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "2.2.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.UI.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.UI.Client.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -2140,6 +2187,19 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.6",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Sqlite/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2165,6 +2225,20 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Sqlite.Design/1.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.6",
+          "Microsoft.EntityFrameworkCore.Sqlite": "1.1.6",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.SqlServer/2.2.0": {
@@ -5563,6 +5637,42 @@
         "lib/netstandard1.1/Ardalis.GuardClauses.dll"
       ]
     },
+    "AspNetCore.HealthChecks.Rabbitmq/2.2.0": {
+      "sha512": "pTLAFXPdiyjpkIdz85b7xwo31J1zEkr6k6E/d2ug3NOjyNtH0qOZSjxvBAC3sho9x6TQptawPoAxwgf7duOyCQ==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.rabbitmq/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.rabbitmq.2.2.0.nupkg.sha512",
+        "aspnetcore.healthchecks.rabbitmq.nuspec",
+        "lib/netstandard2.0/HealthChecks.RabbitMQ.dll"
+      ]
+    },
+    "AspNetCore.HealthChecks.UI/2.2.8": {
+      "sha512": "lhFU1Hi2ArpbzWMvSnlTwFtSToOv3MgjdTrIldQuzSuczPZFnqhxFerhXckgWy0HHu+ZXorQuaXNLc2aUX8qAw==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.ui/2.2.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.ui.2.2.8.nupkg.sha512",
+        "aspnetcore.healthchecks.ui.nuspec",
+        "lib/netstandard2.0/HealthChecks.UI.dll"
+      ]
+    },
+    "AspNetCore.HealthChecks.UI.Client/2.2.2": {
+      "sha512": "2u+lkBa0z8tuUfEQIntSOWOax4WGrbzgKGPUMPwetwd7OguVlNQpoDXFqeHgkosSe/s2vIAtYH0rCD7XnNnQiA==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.ui.client/2.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.ui.client.2.2.2.nupkg.sha512",
+        "aspnetcore.healthchecks.ui.client.nuspec",
+        "lib/netstandard2.0/HealthChecks.UI.Client.dll"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "zisTbxitzki256+rKY0myI2T1yLyO9+qAU8P+FXkd8Dv0Iymk484Y9SbwUlyL3igF/bpiCv7SCdv349rN/JbfQ==",
       "type": "package",
@@ -7484,6 +7594,21 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.1.6": {
+      "sha512": "UVq94HrsK/eUSo4bkYBYW30UQ/uH2GoXcjTv7oIdeMKnAjLE3jm3C/BmftkQpr9beQCSbbcEySaVDhjlhrcQJQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.relational.design/1.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "microsoft.entityframeworkcore.relational.design.1.1.6.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.design.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Sqlite/2.2.0": {
       "sha512": "I3AL3Ff9dy6vu8kJ2RgtIATYoRG1c5ghtOfT3kAI/jOpxFJ1Ih4BADdz49H1h4qo07AqCQiZ8VuOXyw4nUUKag==",
       "type": "package",
@@ -7507,6 +7632,21 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.xml",
         "microsoft.entityframeworkcore.sqlite.core.2.2.0.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlite.core.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Sqlite.Design/1.1.6": {
+      "sha512": "uWBy0RXUs3p7XPbj2xsN6NpAsB9UWw6FdgoM31lYYQfZkB2DOV5l5YiTKi1qxIhVzab9ZN2I96uNY2IKvqIwpA==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.sqlite.design/1.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/Microsoft.EntityFrameworkCore.Sqlite.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.Sqlite.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.Design.xml",
+        "microsoft.entityframeworkcore.sqlite.design.1.1.6.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlite.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.SqlServer/2.2.0": {
@@ -14499,6 +14639,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Ardalis.GuardClauses >= 1.2.4",
+      "AspNetCore.HealthChecks.Rabbitmq >= 2.2.0",
+      "AspNetCore.HealthChecks.UI >= 2.2.8",
       "MESF.Core.ServiceManagement >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.0",
@@ -14558,6 +14700,14 @@
           "Ardalis.GuardClauses": {
             "target": "Package",
             "version": "[1.2.4, )"
+          },
+          "AspNetCore.HealthChecks.Rabbitmq": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "AspNetCore.HealthChecks.UI": {
+            "target": "Package",
+            "version": "[2.2.8, )"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",

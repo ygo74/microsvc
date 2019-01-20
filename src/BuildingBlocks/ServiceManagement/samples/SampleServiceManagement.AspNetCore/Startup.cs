@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MESF.Core.ServiceManagement;
-using MESF.Core.ServiceManagement.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +17,8 @@ using MESF.Core.ServiceManagement.Infrastructure.Data;
 using NJsonSchema;
 using NSwag.AspNetCore;
 using System.Reflection;
-
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using MESF.Core.ServiceManagement.Services;
 
 namespace SampleServiceManagement.AspNetCore
 {
@@ -47,8 +47,18 @@ namespace SampleServiceManagement.AspNetCore
 
             // Register the Swagger services
             services.AddSwaggerDocument(document => document.DocumentName = "Swagger document");
-            services.AddOpenApiDocument(document => document.DocumentName = "OpenQpi document");
+            services.AddOpenApiDocument(document => document.DocumentName = "OpenApi document");
 
+            //Register HealthChecks
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddRabbitMQ(
+                    rabbitMQConnectionString: $"amqp://{Configuration["Messaging:HostName"]}",
+                    name: "rabbitmq-check",
+                    tags: new String[] { "rabbitmq" }
+                );
+
+            services.AddHealthChecksUI();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +74,10 @@ namespace SampleServiceManagement.AspNetCore
             app.UseSwagger();
             app.UseSwaggerUi3();
 
+            // Register HealthCheck UI
+            app.UseHealthChecks("/health");
 
+            app.UseHealthChecksUI();
 
             app.UseMvc();
         }

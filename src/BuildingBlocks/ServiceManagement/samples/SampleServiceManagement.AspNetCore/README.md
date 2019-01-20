@@ -2,6 +2,14 @@
 * NSwag.AspNetCore :
 Source : (docs microsoft)[https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-nswag?view=aspnetcore-2.2&tabs=visual-studio%2Cvisual-studio-xml]	
 
+* HealthCheck :
+AspNetCore.HealthChecks.RabbitMQ :  
+Source : (extensions github)[https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks]
+
+AspNetCore.HealthChecks.UI : 
+
+
+
 
 ## Execute docker compose manually
 * Start :

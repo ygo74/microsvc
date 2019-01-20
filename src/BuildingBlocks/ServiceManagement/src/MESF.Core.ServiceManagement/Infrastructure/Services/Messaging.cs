@@ -5,7 +5,7 @@ using RabbitMQ.Client.Events;
 using Microsoft.Extensions.Configuration;
 
 
-namespace MESF.Core.ServiceManagement
+namespace MESF.Core.ServiceManagement.Services
 {
     public class Messaging : IMessaging
     {
