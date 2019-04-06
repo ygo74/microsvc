@@ -33,3 +33,8 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
     #verbosityRestore: 'detailed' # Options: quiet, minimal, normal, detailed, diagnostic
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'SignalRSaple'
+    targetPath:   $(System.DefaultWorkingDirectory)  
