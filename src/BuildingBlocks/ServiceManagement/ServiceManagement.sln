@@ -15,8 +15,6 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MESF.Core.ServiceManagement.Tests", "unittests\MESF.Core.ServiceManagement.Tests\MESF.Core.ServiceManagement.Tests.csproj", "{F5EA0375-1B45-4E49-9198-3ABA445F0F38}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jenkins", "Jenkins", "{91BF1FCA-8B8A-453D-A2E9-89A40EF6608E}"
 	ProjectSection(SolutionItems) = preProject
 		jenkins\Jenkinsfile = jenkins\Jenkinsfile
@@ -27,28 +25,64 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", 
 		..\..\..\Containers\Kubernetes\sample-service-management.yml = ..\..\..\Containers\Kubernetes\sample-service-management.yml
 	EndProjectSection
 EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "ServiceManagementApplication", "ServiceManagementApplication\ServiceManagementApplication.sfproj", "{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MESF.Core.ServiceManagement.Tests", "tests\MESF.Core.ServiceManagement.Tests\MESF.Core.ServiceManagement.Tests.csproj", "{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose", "docker-compose", "{BFD87198-9D8F-4719-8F36-F3A650C3D7B3}"
+	ProjectSection(SolutionItems) = preProject
+		tests\docker\docker-compose.override.yml = tests\docker\docker-compose.override.yml
+		tests\docker\docker-compose.yml = tests\docker\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Debug|x64.Build.0 = Debug|Any CPU
 		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3}.Release|x64.Build.0 = Release|Any CPU
 		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Debug|x64.Build.0 = Debug|Any CPU
 		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Release|x64.ActiveCfg = Release|Any CPU
+		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5}.Release|x64.Build.0 = Release|Any CPU
 		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Debug|x64.Build.0 = Debug|Any CPU
 		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5EA0375-1B45-4E49-9198-3ABA445F0F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5EA0375-1B45-4E49-9198-3ABA445F0F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5EA0375-1B45-4E49-9198-3ABA445F0F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5EA0375-1B45-4E49-9198-3ABA445F0F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Release|x64.ActiveCfg = Release|Any CPU
+		{F4D29FC4-F371-4CC1-B556-4B31051C85F5}.Release|x64.Build.0 = Release|Any CPU
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Debug|x64.ActiveCfg = Debug|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Debug|x64.Build.0 = Debug|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Debug|x64.Deploy.0 = Debug|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Release|Any CPU.ActiveCfg = Release|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Release|x64.ActiveCfg = Release|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Release|x64.Build.0 = Release|x64
+		{9D7E27AF-F9D5-43B3-8E88-89011FB64F4D}.Release|x64.Deploy.0 = Release|x64
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Debug|x64.Build.0 = Debug|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Release|x64.ActiveCfg = Release|Any CPU
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,7 +90,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E8A066B8-0A28-43A5-9CFC-8B372049C2A3} = {4376F066-7A8F-411A-A3E1-5C0FD58A9F46}
 		{42C2BB08-086E-4DD3-9A10-8D51566D2DB5} = {ECB70201-9D6A-4D76-B905-E7B5219FA97C}
-		{F5EA0375-1B45-4E49-9198-3ABA445F0F38} = {0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}
+		{3CE4824A-8EC0-492F-9FFE-C0B5710C837D} = {0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}
+		{BFD87198-9D8F-4719-8F36-F3A650C3D7B3} = {0C3D6F7B-1A7D-4CFC-A1F8-0BD1E3B492ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {300B357D-13C4-4DA3-BCA8-C3E2735A9AFC}

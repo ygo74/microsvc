@@ -63,11 +63,11 @@ namespace SampleServiceManagement.AspNetCore.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{key}")]
-        public string Get(String key)
-        {
-            return String.Format("value for key {0} : {1}", key, _messaging.GetMessagingConfiguration(key));
-        }
+        //[HttpGet("{key}")]
+        //public string Get(String key)
+        //{
+        //    //return String.Format("value for key {0} : {1}", key, _messaging.GetMessagingConfiguration(key));
+        //}
 
 
         
@@ -88,7 +88,7 @@ namespace SampleServiceManagement.AspNetCore.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
-            _messaging.PublishMessage();
+           // _messaging.PublishMessage();
             
         }
 

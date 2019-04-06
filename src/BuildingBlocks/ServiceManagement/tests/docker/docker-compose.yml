@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  #sampleservicemanagement.aspnetcore:
+    # image: sampleservicemanagementaspnetcore
+    # build:
+      # context: .
+      # dockerfile: samples/SampleServiceManagement.AspNetCore/Dockerfile
+
+    # depends_on:
+    # - rabbitmq
+    # - sql.data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+
+  sql.data:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S localhost -U SA -P 'Pass@word.1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    
+    volumes:
+    - type: bind
+      source: D:\devel\temp\sql_db_docker\service_management
+      target: /var/opt/mssql
+
+#volumes:1
+#  sql_data_service_management:
+#    external: true
+#  nosql.data:
+#    image: mongo
+#networks:
+#  default:
+#    external:
+#      name: nat

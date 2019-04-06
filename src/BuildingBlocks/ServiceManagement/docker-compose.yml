@@ -33,7 +33,7 @@ services:
       source: D:\devel\temp\sql_db_docker\service_management
       target: /var/opt/mssql
 
-#volumes:
+#volumes:1
 #  sql_data_service_management:
 #    external: true
 #  nosql.data:
